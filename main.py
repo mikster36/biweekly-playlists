@@ -87,6 +87,7 @@ def add_to_playlist(counter: int, tracks: list):
         playlist_id=playlist_uri,
         items=tracks)
     my_spotify.playlist_upload_cover_image(playlist_id=playlist_uri, image_b64=get_image(PLAYLIST_COVER_PATH))
+    my_spotify.playlist_replace_items(playlist_id=c.SPOTIFY_PLAYLIST_URI, items=tracks)
 
 
 def clean(item: str, filter: str):
