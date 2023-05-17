@@ -98,8 +98,9 @@ def clean(item: str, filter: str):
             item = item[:item.index("&")]
         return item.rstrip()
     if filter.lower() == "track":
-        if re.search("[(].+[)]$", item) and "remix" not in item.lower():
-            item = item[:item.index("(")]
+        if re.search("[(].+[)]$", item) and not ("mix" in item.lower() or "edit" in item.lower() or "dub" in item.lower()):
+            item = re.sub("[(].+[)]$", "", item)
+            item = item.replace("[", "").replace("]", "")
         return item.rstrip()
     raise Exception("Filter must be track or artist")
 
